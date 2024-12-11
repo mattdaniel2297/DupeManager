@@ -7,7 +7,7 @@ def test(root_dir):
     db_loc = os.path.join(root_dir, "database.db")
     if os.path.exists(db_loc):
         print("database exists")
-        catalog_items(root_dir)
+        catalog_items(root_dir, db_loc)
     else:
         create_db(db_loc)
     # print(db_loc)
