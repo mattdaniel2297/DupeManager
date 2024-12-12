@@ -16,7 +16,7 @@ def catalog_items(dir, db_loc):
     total = 0
     count = 0
     for root, dir, files in os.walk(dir):
-        for extension in ['jpg', 'jpeg', 'gif', 'png']:
+        for extension in ['jpg', 'jpeg', 'gif', 'png' ,'webp', 'mp4', 'webm', 'avi', 'mov', 'wmv', 'ogg', 'mkv']:
             for filename in fnmatch.filter(files, '*.' + extension):
                 j = os.path.join(root, filename)
                 print(root, filename)
