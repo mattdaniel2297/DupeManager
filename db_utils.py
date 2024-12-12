@@ -13,6 +13,8 @@ def catalog_items(dir, db_loc):
     con = sqlite3.connect(db_loc)
     cur = con.cursor()
 
+    total = 0
+    count = 0
     for root, dir, files in os.walk(dir):
         for extension in ['jpg', 'jpeg', 'gif', 'png']:
             for filename in fnmatch.filter(files, '*.' + extension):
@@ -23,6 +25,12 @@ def catalog_items(dir, db_loc):
                 print(ck)
                 data = (filename, ck, root)
                 cur.execute("insert into item VALUES (?, ?, ?)", data)
+                count += 1
+                if count > 1000:
+                    con.commit()
+                    total += count
+                    count = 0
+                    print(f"----- rows created so far: {total} -----")
     con.commit()
     con.close()
 
