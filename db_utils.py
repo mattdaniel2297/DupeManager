@@ -33,4 +33,5 @@ def catalog_items(dir, db_loc):
                     print(f"----- rows created so far: {total} -----")
     con.commit()
     con.close()
+    print(f"total items: {total}")
 
